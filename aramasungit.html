@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/office/16/null/hearts.png">
+    <title>Ara</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+    * {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-style: italic;
+    }
+    html, body{
+        margin: 0px;
+        padding: 0px;
+    }
+    .main {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url(./pic/hart.gif);
+        background-position: center;
+    }
+    #txt {
+        font-size: 50px;
+        text-align: center;
+        font-style: normal;
+    }
+    .message {
+        width: 40vw;
+        text-align: center;
+        font-size: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    #greet {
+        font-size: 13px;
+        font-style: normal;
+    }
+  .main {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 4s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+</style>
+<body onload="startTime()">
+    <div class="main">
+        <div class="warp">
+            <div id="txt"></div>
+            <br>
+            <div class="message">
+                <div id="greet"></div>
+                <div id="content"></div>
+            </div>
+            
+        </div>
+    </div>
+        
+ 
+
+
+<script>
+function startTime() {
+  var greetings = "";
+  var morningMessage = " ";
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+  setTimeout(startTime, 1000);
+  if (h => 0 && h < 12) {
+    greetings = "Good morning, Mahal ko :)";
+    morningMessage = "Start your day na maganda at wag mo kalimutang kumain at icheck yung tiktok acct mo kung may nabenta ka mwa. I love you";
+  } if (h >11 && h < 17) {
+    greetings = "Good afternoon, Mahal ko :)";
+    morningMessage = "Kumain ka sa oras wag papalipas. I love you always";
+  } if ( h > 17 && h <=23) {
+    greetings = "Good evening, Mahal ko :)";
+    morningMessage = " Good eve mahal don't forget na sabihin sakin yung 3 dahilan kung bakit ka masaya sa buong araw mo. Mahal kita lagi :)";
+  }if (h > 17 && h <=23) {
+    document.getElementById('greet').innerHTML = greetings;
+    document.getElementById('content').innerHTML = morningMessage;
+  } if (h => 0 && h <12) {
+    document.getElementById('greet').innerHTML = greetings;
+    document.getElementById('content').innerHTML = morningMessage;
+  }if ( h > 11 && h < 17) {
+    document.getElementById('greet').innerHTML = greetings;
+    document.getElementById('content').innerHTML = morningMessage;
+  }
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+
+</script>
+
+</body>
+</html>
